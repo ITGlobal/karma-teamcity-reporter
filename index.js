@@ -1,5 +1,4 @@
 var util = require('util')
-var fs = require('fs')
 
 var escapeMessage = function (message) {
   if (message === null || message === undefined) {
@@ -30,8 +29,6 @@ var formatMessage = function () {
 var TeamcityReporter = function (baseReporterDecorator) {
   baseReporterDecorator(this)
   var self = this
-
-  this.adapters = [fs.writeSync.bind(fs.writeSync, 1)]
 
   this.TEST_IGNORED = "##teamcity[testIgnored name='%s']"
   this.SUITE_START = "##teamcity[testSuiteStarted name='%s']"
